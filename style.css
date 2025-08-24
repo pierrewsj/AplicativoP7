@@ -1,0 +1,21 @@
+/* style.css corrigido */
+:root {
+  --cor-fundo:#0b1d30;
+  --cor-caixa:#1c2b3d;
+  --cor-primaria:#00d2ff;
+  --cor-secundaria:#FFA726;
+  --cor-texto:#ffffff;
+}
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+.container {
+  max-width: 1200px; /* Melhor aproveitamento em desktop */
+  margin:0 auto;
+  padding:2rem;
+  background: rgba(28,43,61,0.9);
+  border-radius:20px;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang='pt-BR'><head><meta charset='utf-8'><title>Comissão Seguro</title>
+<script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver/dist/FileSaver.min.js"></script>
+<script>
+function __formatHeaderRow(ws){
+  const header = ws.getRow(1);
+  header.eachCell(c => { c.value = String(c.value ?? '').toUpperCase(); });
+  header.font = { bold:true };
+  header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'FFFFFF00' } };
+  header.alignment = { vertical:'middle', horizontal:'center' };
+}
+
+async function exportarExcel(){
+  const wb = new ExcelJS.Workbook();
+  const ws = wb.addWorksheet("Controle Comissão de Seguro");
+  ws.addRow(["Setor","Turno","Controlador de acesso","Número de chassi","Data e Hora"]);
+  __formatHeaderRow(ws);
+  const buf = await wb.xlsx.writeBuffer();
+  saveAs(new Blob([buf]), "comissao.xlsx");
+}
+</script></head><body><h1>Comissão Seguro</h1><button onclick='exportarExcel()'>Exportar Excel</button></body></html>
